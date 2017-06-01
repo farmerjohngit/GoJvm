@@ -13,6 +13,7 @@ func StartJvm(cmd *cmd.Command) {
 	if err != nil {
 		panic(err)
 	}
+	println("------------------------")
 	cf, err := classfile.Parse(bytes)
 	if err != nil {
 		panic(err)

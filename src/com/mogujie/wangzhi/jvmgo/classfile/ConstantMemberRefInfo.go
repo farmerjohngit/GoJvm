@@ -1,6 +1,5 @@
-package constant
+package classfile
 
-import "com/mogujie/wangzhi/jvmgo/classfile"
 
 /*
 CONSTANT_Fieldref_info {
@@ -36,20 +35,16 @@ type ConstantInterfaceMethodRefInfo struct {
 }
 
 type ConstantMemberRefInfo struct {
-	cp               *ConstantPool
 	classIndex       uint16
 	nameAndTypeIndex uint16
 }
 
 
-func (self *ConstantMemberRefInfo) readInfo(reader *classfile.ClassReader) {
-	self.classIndex = reader.ReadUint16()
-	self.nameAndTypeIndex = reader.ReadUint16()
+func (self *ConstantMemberRefInfo) readInfo(reader *ClassReader) {
+	self.classIndex = reader.readUint16()
+	self.nameAndTypeIndex = reader.readUint16()
 }
 
-func (self *ConstantMemberRefInfo) ClassName() string {
-	return self.cp.getClassName(self.classIndex)
-}
-func (self *ConstantMemberRefInfo) NameAndDescriptor() (string, string) {
-	return self.cp.getNameAndType(self.nameAndTypeIndex)
+type MemberRefInfo interface {
+
 }

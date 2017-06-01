@@ -1,7 +1,5 @@
 package classfile
 
-import "com/mogujie/wangzhi/jvmgo/classfile/constant"
-
 /*
 ClassFile {
     u4             magic;
@@ -27,26 +25,54 @@ type ClassFile struct {
 	minorVersion uint16
 	majorVersion uint16
 	poolCount    uint16
-	pool         *constant.ConstantPool
+	pool         *ConstantPool
+	accessFlags  uint16
+	thisClass    uint16
+	superClass   uint16
+	interfaces   []uint16
+	fields       []*MemberInfo
+	methods      []*MemberInfo
+	AttributeTable
 }
 
 func (self *ClassFile) read(reader *ClassReader) {
 	self.readMagic(reader)
 	self.readVersion(reader)
+	self.readConstantPool(reader)
+	self.accessFlags = reader.readUint16()
+	self.thisClass = reader.readUint16()
+	self.superClass = reader.readUint16()
+	self.interfaces = reader.readUint16Arr()
+	self.fields = self.readMembers(reader)
+	self.methods = self.readMembers(reader)
+	self.attributes = readAttributes(reader, self.pool)
 }
 
 func (self *ClassFile) readMagic(reader *ClassReader) {
-	self.magic = reader.ReadUint32()
+	self.magic = reader.readUint32()
 }
 
 func (self *ClassFile) readVersion(reader *ClassReader) {
-	self.minorVersion = reader.ReadUint16()
-	self.majorVersion = reader.ReadUint16()
+	self.minorVersion = reader.readUint16()
+	self.majorVersion = reader.readUint16()
 }
 
 func (self *ClassFile) readConstantPool(reader *ClassReader) {
-	self.poolCount = reader.ReadUint16()
-	self.pool = constant.NewConstantPool(self.poolCount)
+	self.poolCount = reader.readUint16()
+	self.pool = NewConstantPool(self.poolCount)
+	self.pool.read(reader)
+	self.pool.printConstantPool()
+}
+
+// read field or method table
+func (self *ClassFile) readMembers(reader *ClassReader) []*MemberInfo {
+	memberCount := reader.readUint16()
+	members := make([]*MemberInfo, memberCount)
+	for i := range members {
+		members[i] = &MemberInfo{cp: self.pool}
+		members[i].read(reader)
+	}
+	return members
 }
 
 /********************The Get Method********************/
