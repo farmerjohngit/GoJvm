@@ -23,17 +23,18 @@ func (self *BranchInstruction) FetchOp(reader *ByteCodeReader) {
 }
 
 type Index8Instruction struct {
-	Index uint8
+	//because  there have a inst 'wide', so we can not use a uint8 represent index
+	Index uint
 }
 
 func (self *Index8Instruction) FetchOp(reader *ByteCodeReader) {
-	self.Index = reader.ReadUint8()
+	self.Index = uint(reader.ReadUint8())
 }
 
 type Index16Instruction struct {
-	Index uint16
+	Index uint
 }
 
 func (self *Index16Instruction) FetchOp(reader *ByteCodeReader) {
-	self.Index = reader.ReadUint16()
+	self.Index = uint(reader.ReadUint16())
 }

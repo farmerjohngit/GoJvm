@@ -11,7 +11,7 @@ type IINC struct {
 	Const int32
 }
 
-func (self *IINC) FetchOperands(reader *base.ByteCodeReader) {
+func (self *IINC) FetchOp(reader *base.ByteCodeReader) {
 	self.Index = uint(reader.ReadUint8())
 	self.Const = int32(reader.ReadInt8())
 }

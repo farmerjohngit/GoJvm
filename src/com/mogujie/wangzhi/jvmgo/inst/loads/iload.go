@@ -43,7 +43,7 @@ type ILOAD_X struct {
 }
 
 func (self *ILOAD_X) Execute(frame *run.Frame) {
-	_iload(frame,uint(self.Index))
+	_iload(frame, uint(self.Index))
 }
 
 
