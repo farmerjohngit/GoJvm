@@ -12,7 +12,7 @@ type IFEQ struct {
 func (self *IFEQ) Execute(frame *run.Frame) {
 	v1 := frame.OpStack().PopInt()
 	if v1 == 0 {
-		base.Branch(frame, int(self.Offset))
+		base.Branch(frame, int32(self.Offset))
 	}
 }
 
@@ -23,7 +23,7 @@ type IFNE struct {
 func (self *IFNE) Execute(frame *run.Frame) {
 	v1 := frame.OpStack().PopInt()
 	if v1 != 0 {
-		base.Branch(frame, int(self.Offset))
+		base.Branch(frame, int32(self.Offset))
 	}
 }
 
@@ -34,7 +34,7 @@ type IFLT struct {
 func (self *IFLT) Execute(frame *run.Frame) {
 	v1 := frame.OpStack().PopInt()
 	if v1 < 0 {
-		base.Branch(frame, int(self.Offset))
+		base.Branch(frame, int32(self.Offset))
 	}
 }
 
@@ -45,7 +45,7 @@ type IFLE struct {
 func (self *IFLE) Execute(frame *run.Frame) {
 	v1 := frame.OpStack().PopInt()
 	if v1 <= 0 {
-		base.Branch(frame, int(self.Offset))
+		base.Branch(frame, int32(self.Offset))
 	}
 }
 
@@ -56,7 +56,7 @@ type IFGT struct {
 func (self *IFGT) Execute(frame *run.Frame) {
 	v1 := frame.OpStack().PopInt()
 	if v1 > 0 {
-		base.Branch(frame, int(self.Offset))
+		base.Branch(frame, int32(self.Offset))
 	}
 }
 
@@ -67,6 +67,6 @@ type IFGE struct {
 func (self *IFGE) Execute(frame *run.Frame) {
 	v1 := frame.OpStack().PopInt()
 	if v1 >= 0 {
-		base.Branch(frame, int(self.Offset))
+		base.Branch(frame, int32(self.Offset))
 	}
 }

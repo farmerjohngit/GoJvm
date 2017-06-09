@@ -88,3 +88,15 @@ func (self *ClassFile) MinorVersion() uint16 {
 func (self *ClassFile) MajorVersion() uint16 {
 	return self.majorVersion
 }
+
+func (self *ClassFile) MethodInfo() []*MemberInfo {
+	return self.methods
+}
+
+func (self *ClassFile) FieldInfo() [] *MemberInfo {
+	return self.fields
+}
+
+func (self *ClassFile) ConstantPool() *ConstantPool {
+	return self.pool
+}

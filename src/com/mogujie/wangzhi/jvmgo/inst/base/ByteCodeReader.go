@@ -2,7 +2,7 @@ package base
 
 type ByteCodeReader struct {
 	code []byte
-	pc   int
+	pc   int32
 }
 
 func (self *ByteCodeReader) ReadInt8() int8 {
@@ -45,4 +45,13 @@ func (self *ByteCodeReader) SkipPadding() {
 	for self.pc%4 != 0 {
 		self.ReadUint8()
 	}
+}
+
+func (self *ByteCodeReader) Reset(code []byte, pc int32) {
+	self.code = code
+	self.pc = pc
+}
+
+func (self *ByteCodeReader) PC() int32 {
+	return self.pc
 }

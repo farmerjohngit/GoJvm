@@ -13,14 +13,14 @@ func (self *GOTO) Execute(frame *run.Frame) {
 	base.Branch(frame, int32(self.Offset))
 }
 
-type GOTOW struct {
+type GOTO_W struct {
 	Offset int32
 }
 
-func (self *GOTOW) FetchOp(reader *base.ByteCodeReader) {
+func (self *GOTO_W) FetchOp(reader *base.ByteCodeReader) {
 	self.Offset = reader.ReadInt32()
 }
 
-func (self *GOTOW) Execute(frame *run.Frame) {
+func (self *GOTO_W) Execute(frame *run.Frame) {
 	base.Branch(frame, self.Offset)
 }

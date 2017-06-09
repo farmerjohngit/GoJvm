@@ -9,7 +9,7 @@ type Thread struct {
 
 func NewThread() *Thread {
 	thread := &Thread{
-		pc:    -1,
+		pc:    0,
 		stack: NewStack(default_max_stack)}
 	return thread
 }
@@ -21,12 +21,16 @@ func NewThreadWithMaxStack(maxStack int32) *Thread {
 	return thread
 }
 
-func (self *Thread) pushFrame(frame *Frame) {
+func (self *Thread) PushFrame(frame *Frame) {
 	self.stack.pushFrame(frame)
 }
 
-func (self *Thread) popFrame() *Frame {
+func (self *Thread) PopFrame() *Frame {
 	return self.stack.popFrame()
+}
+
+func (self *Thread) SetPC(pc int32) {
+	self.pc = pc
 }
 
 func (self *Thread) PC() int32 {

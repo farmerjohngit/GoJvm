@@ -16,6 +16,7 @@
 # Mongo Explorer plugin:
 .idea/*
 
+pkg/*
 
 ## Plugin-specific files:
 

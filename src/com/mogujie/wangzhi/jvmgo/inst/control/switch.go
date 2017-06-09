@@ -29,20 +29,20 @@ func (self *TABLE_SWITCH) Execute(frame *run.Frame) {
 	}
 }
 
-type LOCKUP_SWITCH struct {
+type LOOKUP_SWITCH struct {
 	defaultOffset int32
 	npairs        int32
 	matchOffsets  []int32
 }
 
-func (self *LOCKUP_SWITCH) FetchOp(reader *base.ByteCodeReader) {
+func (self *LOOKUP_SWITCH) FetchOp(reader *base.ByteCodeReader) {
 	reader.SkipPadding()
 	self.defaultOffset = reader.ReadInt32()
 	self.npairs = reader.ReadInt32()
 	self.matchOffsets = reader.ReadInt32s(self.npairs * 2)
 }
 
-func (self *LOCKUP_SWITCH) Execute(frame *run.Frame) {
+func (self *LOOKUP_SWITCH) Execute(frame *run.Frame) {
 	key := frame.OpStack().PopInt()
 
 	for i := int32(0); i < self.npairs*2; i += 2 {

@@ -36,11 +36,11 @@ func (self *CodeAttribute) readInfo(reader *ClassReader) {
 	self.attributes = readAttributes(reader, self.cp)
 }
 
-func (self *CodeAttribute) MaxStack() uint {
-	return uint(self.maxStack)
+func (self *CodeAttribute) MaxStack() uint32 {
+	return uint32(self.maxStack)
 }
-func (self *CodeAttribute) MaxLocals() uint {
-	return uint(self.maxLocals)
+func (self *CodeAttribute) MaxLocals() uint32 {
+	return uint32(self.maxLocals)
 }
 func (self *CodeAttribute) Code() []byte {
 	return self.code

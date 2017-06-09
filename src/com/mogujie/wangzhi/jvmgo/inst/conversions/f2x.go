@@ -2,6 +2,7 @@ package conversions
 
 import (
 	"com/mogujie/wangzhi/jvmgo/run"
+	"com/mogujie/wangzhi/jvmgo/inst/base"
 )
 
 // Convert float to double

@@ -1,8 +1,9 @@
 package math
 
+
 import (
-	"github.com/zxh0/jvm.go/jvmgo/instructions/base"
-	"github.com/zxh0/jvm.go/jvmgo/rtda"
+	"com/mogujie/wangzhi/jvmgo/inst/base"
+	"com/mogujie/wangzhi/jvmgo/run"
 )
 
 // Multiply double

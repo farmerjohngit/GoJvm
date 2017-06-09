@@ -52,7 +52,7 @@ func (self *LREM) Execute(frame *run.Frame) {
 	v1 := stack.PopLong()
 
 	if v2 == 0 {
-		frame.Thread().ThrowDivByZero()
+		panic("java.lang.ArithmeticException: / by zero")
 	} else {
 		result := v1 % v2
 		stack.PushLong(result)

@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	arg := []string{"java", "-cp", "/Users/farmerjohn/IdeaProjects/pandora-gradle/build/classes/main", "-XjavaHome",
+	arg := []string{"java", "-cp", "/Users/farmerjohn/AndroidStudioProjects/MyApplication8/app/build/intermediates/classes/debug", "-XjavaHome",
 			"/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home", "-verbose","com.wangzhi.jvmgo.Main"}
 	cmd, err := cmd.ParseCommand(arg)
 	if err != nil {

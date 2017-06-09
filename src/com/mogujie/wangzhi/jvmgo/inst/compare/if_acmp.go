@@ -10,7 +10,7 @@ type IF_ACMPEQ struct{ base.BranchInstruction }
 
 func (self *IF_ACMPEQ) Execute(frame *run.Frame) {
 	if _acmp(frame) {
-		base.Branch(frame, int(self.Offset))
+		base.Branch(frame, int32(self.Offset))
 	}
 }
 
@@ -18,7 +18,7 @@ type IF_ACMPNE struct{ base.BranchInstruction }
 
 func (self *IF_ACMPNE) Execute(frame *run.Frame) {
 	if !_acmp(frame) {
-		base.Branch(frame, int(self.Offset))
+		base.Branch(frame, int32(self.Offset))
 	}
 }
 
