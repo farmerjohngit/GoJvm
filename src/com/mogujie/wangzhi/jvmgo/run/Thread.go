@@ -4,7 +4,7 @@ const default_max_stack = 256
 
 type Thread struct {
 	stack *Stack
-	pc    int
+	pc    int32
 }
 
 func NewThread() *Thread {
@@ -27,4 +27,8 @@ func (self *Thread) pushFrame(frame *Frame) {
 
 func (self *Thread) popFrame() *Frame {
 	return self.stack.popFrame()
+}
+
+func (self *Thread) PC() int32 {
+	return self.pc
 }

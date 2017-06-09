@@ -1,8 +1,9 @@
 package loads
 
+
 import (
-	"github.com/zxh0/jvm.go/jvmgo/instructions/base"
-	"github.com/zxh0/jvm.go/jvmgo/run"
+	"com/mogujie/wangzhi/jvmgo/inst/base"
+	"com/mogujie/wangzhi/jvmgo/run"
 )
 
 // Load reference from local variable
@@ -38,5 +39,5 @@ func (self *ALOAD_3) Execute(frame *run.Frame) {
 
 func _aload(frame *run.Frame, index uint) {
 	ref := frame.LocalVars().GetRef(index)
-	frame.OperandStack().PushRef(ref)
+	frame.OpStack().PushRef(ref)
 }

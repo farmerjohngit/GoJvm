@@ -15,11 +15,11 @@ func (self *NoOpInstruction) FetchOp(reader *ByteCodeReader) {
 }
 
 type BranchInstruction struct {
-	Offset uint16
+	Offset int16
 }
 
 func (self *BranchInstruction) FetchOp(reader *ByteCodeReader) {
-	self.Offset = reader.ReadUint16()
+	self.Offset = reader.ReadInt16()
 }
 
 type Index8Instruction struct {
